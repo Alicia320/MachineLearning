@@ -64,7 +64,7 @@ models['SVM'] = SVC()
 # 评估算法
 results = []
 for key in models:
-    kfold = KFold(n_splits=10, random_state=seed)
+    kfold = KFold(n_splits=10, random_state=seed,shuffle=True)
     cv_results = cross_val_score(models[key], X_train, Y_train, cv=kfold, scoring='accuracy')
     results.append(cv_results)
     print('%s: %f (%f)' %(key, cv_results.mean(), cv_results.std()))
